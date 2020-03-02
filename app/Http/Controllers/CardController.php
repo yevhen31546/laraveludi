@@ -28,8 +28,9 @@ class CardController extends Controller{
     public function index(Request $request){
         $input=$request->all();
         $udi_list=array();
-        if(session()->has('udi_list')){
-            $udi_list=session()->get('udi_list');
+        if(session()->has('udi_list')) {
+            $udi_list = session()->get('udi_list');
+        }
         $input=$request->all();
         $udi_list=array();
         if(session()->has('udi_list')){

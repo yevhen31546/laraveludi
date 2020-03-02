@@ -1562,7 +1562,7 @@ label.valid:after {
 
     text-align: center;
 
-    background: rgb(0,0,0,0.5);
+    background: rgba(0,0,0,0.5);
 
 }
 
@@ -1925,11 +1925,6 @@ label.valid:after {
 .page-link, .page-link:hover {
     color: #6d2077;
 }
-=======
-
-
->>>>>>> 4366a51618bea847313d4e31f4595da4640f75af
-
 
 
 
