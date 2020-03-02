@@ -5,10 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\DashboardController;
-<<<<<<< HEAD
 use App\Http\Controllers\TrayController;
-=======
->>>>>>> 4366a51618bea847313d4e31f4595da4640f75af
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\InvoiceController;
 
@@ -27,11 +24,7 @@ use App\Http\Controllers\InvoiceController;
 Route::group(['middleware' => 'web'], function () {
     Route::get('/', function () {
         return redirect($to = 'dashboard', $status = 302, $headers = [], $secure = null);
-<<<<<<< HEAD
-        // return view('welcome');
-=======
         return view('welcome');
->>>>>>> 4366a51618bea847313d4e31f4595da4640f75af
     })->middleware(['auth','verified']);
     Route::get('/home', function () {
         return redirect($to = 'dashboard', $status = 302, $headers = [], $secure = null);
@@ -43,10 +36,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('logout', [LoginController::class, 'logout'])->name('logout');
         Route::any('dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::any('getudi', [DashboardController::class, 'getUdi'])->name('getudi');
-<<<<<<< HEAD
         Route::any('tray', [TrayController::class, 'getBatch'])->name('getbatch');
-=======
->>>>>>> 4366a51618bea847313d4e31f4595da4640f75af
         Route::any('reloadudi', [DashboardController::class, 'reloadUdi'])->name('reloadudi');
         Route::any('card', [CardController::class, 'index'])->name('card');
         Route::any('printcard', [CardController::class, 'printCard'])->name('printcard');

@@ -119,10 +119,7 @@ function surchUdi(){
     }
     ///// end of camera
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 4366a51618bea847313d4e31f4595da4640f75af
 function reloadUdi(){
     $.ajax({
         url: baseUrl+"reloadudi",
@@ -173,8 +170,6 @@ function get_GUDID(udi_str){
     }
 }
 
-<<<<<<< HEAD
-
 // Search batch number
 function searchBatch(url){
     $('#results').append(loaderHtmlRound);
@@ -192,8 +187,6 @@ function searchBatch(url){
     });
 }
 
-=======
->>>>>>> 4366a51618bea847313d4e31f4595da4640f75af
 $(document).ready(function() {
     reloadUdi();
     $('#frm_udi').submit(function( event ) {return false;});
@@ -229,7 +222,6 @@ $(document).ready(function() {
     $(".no").on("click", function(){
         $(".warning-background").css("display","none");
     });
-<<<<<<< HEAD
 
 
     /**
@@ -269,9 +261,6 @@ $(document).ready(function() {
         searchBatch(url);
         window.history.pushState("", "", url);
     });
-=======
->>>>>>> 4366a51618bea847313d4e31f4595da4640f75af
-    
 });
 
 

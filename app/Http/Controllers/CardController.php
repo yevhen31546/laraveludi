@@ -26,18 +26,14 @@ class CardController extends Controller{
      */
 
     public function index(Request $request){
-<<<<<<< HEAD
         $input=$request->all();
         $udi_list=array();
         if(session()->has('udi_list')){
             $udi_list=session()->get('udi_list');
-            dd($udi_list); exit;
-=======
-        $input=$request->all();        
-        $udi_list=array();        
+        $input=$request->all();
+        $udi_list=array();
         if(session()->has('udi_list')){
             $udi_list=session()->get('udi_list');
->>>>>>> 4366a51618bea847313d4e31f4595da4640f75af
             $udi_list['other']=$input;
             session()->put('udi_list',$udi_list);
             $invoice_flag = false;
@@ -53,10 +49,7 @@ class CardController extends Controller{
     public function printCard(Request $request){
         if(session()->has('udi_list')){
             $udi_list=session()->get('udi_list');
-<<<<<<< HEAD
-=======
-            
->>>>>>> 4366a51618bea847313d4e31f4595da4640f75af
+
             PDF::SetTitle('Card');
             $this->frontCard($udi_list);
             foreach ($udi_list['di'] as $value) {
@@ -85,11 +78,7 @@ class CardController extends Controller{
         PDF::Write(0,$udi_list['other']['patient_name']);
         PDF::SetXY(74, 64);
         PDF::Write(0,'________________________________');
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 4366a51618bea847313d4e31f4595da4640f75af
         PDF::Image(url('/card_bg/i_2.jpg'),66,68,6,6);
         PDF::SetXY(75, 69);
         PDF::Write(0,$udi_list['other']['surgery_date']);
