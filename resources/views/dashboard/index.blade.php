@@ -160,6 +160,11 @@
                             {{ form_submit(__('labels.dashboard.submitbtn'),'btn form-submit') }}
                         </div>
                     {{ html()->form()->close() }}
+
+                    <a class="button-primary" href="{{ url('tray') }}" style="float: right;">
+                        Go to Tray
+                        <i class="zmdi zmdi-arrow-right"></i>
+                    </a>
                 </div>
                 
                 <div class="warning-background">

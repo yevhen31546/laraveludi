@@ -119,6 +119,7 @@ function surchUdi(){
     }
     ///// end of camera
 }
+
 function reloadUdi(){
     $.ajax({
         url: baseUrl+"reloadudi",
@@ -169,6 +170,28 @@ function get_GUDID(udi_str){
     }
 }
 
+// Search batch number
+function searchBatch(url) {
+    const target = $('#results');
+    target.append(loaderHtmlRound);
+    $.ajax({
+        url: url,
+        type: 'POST',
+        dataType: 'json',
+        data: {batch_num: $("#batch_num").val()},
+        success: function(resp) {
+            console.log('response...', resp);
+            target.children().remove();
+            target.html(resp);
+            $('#loading').remove();
+        },
+        error: function (resp) {
+            $('#loading').remove();
+            console.log(resp);
+        }
+    });
+}
+
 $(document).ready(function() {
     reloadUdi();
     $('#frm_udi').submit(function( event ) {return false;});
@@ -204,7 +227,55 @@ $(document).ready(function() {
     $(".no").on("click", function(){
         $(".warning-background").css("display","none");
     });
-    
+
+
+    /**
+     * Alexey code for tray
+     */
+    $('#tray_continue').click(function(e) {
+        e.preventDefault();
+        if (!$("#tray_num").val()) {
+            $("#tray_num").addClass('batch-num-error');
+        } else {
+            $('#tray_form').submit();
+            window.open(baseUrl+'printtray');
+        }
+        // $('#tray_form').submit();
+    });
+
+    $('#scan_batch').click(function( event ) {
+        event.preventDefault();
+        if (!$("#batch_num").val()) {
+            $("#batch_num").addClass('batch-num-error');
+        } else {
+            // window.location = baseUrl + "tray";
+            searchBatch(baseUrl+"tray");
+        }
+    });
+
+    $("#batch_num").keyup(function(e){
+        e.preventDefault();
+
+        if( $("#batch_num").hasClass("batch-num-error") ){
+
+            $("#batch_num").removeClass("batch-num-error");
+        }
+
+        var code = e.keyCode || e.which;
+        if(code == 13) {
+            searchBatch(baseUrl+"tray");
+        }
+    });
+
+    // tray pagination
+    $('body').on('click', '.pagination a', function(e) {
+        e.preventDefault();
+
+        var url = $(this).attr('href');
+        console.log('pagination url: ', url);
+        searchBatch(url);
+        window.history.pushState("", "", url);
+    });
 });
 
 

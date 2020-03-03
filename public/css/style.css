@@ -1562,7 +1562,7 @@ label.valid:after {
 
     text-align: center;
 
-    background: rgb(0,0,0,0.5);
+    background: rgba(0,0,0,0.5);
 
 }
 
@@ -1878,8 +1878,53 @@ label.valid:after {
 }
 
 
+/*****************************************************************/
+/************* Alexey Code from now **************/
+
+.container_box .row.tray-label{
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.container_box .row.tray-bottom{
+    margin-top: 20px;
+}
+
+#scan_tray, #scan_batch {
+    background: rgba(109, 32, 119, 1);
+    color: #fff;
+    width: 100%;
+}
 
 
+#tray_back, #tray_continue {
+    background: rgba(109, 32, 119, 1);
+    color: #fff;
+    width: 100%;
+    height: 150px;
+}
+
+#batch_num, #scan_batch {
+    height: 80px;
+}
+
+#tray_num::placeholder, #batch_num::placeholder {
+    text-align: center;
+}
+
+.batch-num-error {
+    border-color: red;
+}
+
+.page-item.active .page-link {
+    background-color: #6d2077;
+    border-color: #6d2077;
+    color: white;
+}
+
+.page-link, .page-link:hover {
+    color: #6d2077;
+}
 
 
 
