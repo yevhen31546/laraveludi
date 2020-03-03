@@ -171,8 +171,9 @@ function get_GUDID(udi_str){
 }
 
 // Search batch number
-function searchBatch(url){
-    $('#results').append(loaderHtmlRound);
+function searchBatch(url) {
+    const target = $('#results');
+    target.append(loaderHtmlRound);
     $.ajax({
         url: url,
         type: 'POST',
@@ -180,9 +181,13 @@ function searchBatch(url){
         data: {batch_num: $("#batch_num").val()},
         success: function(resp) {
             console.log('response...', resp);
-            $('#results').children().remove();
-            $('#results').html(resp);
+            target.children().remove();
+            target.html(resp);
             $('#loading').remove();
+        },
+        error: function (resp) {
+            $('#loading').remove();
+            console.log(resp);
         }
     });
 }
@@ -227,6 +232,16 @@ $(document).ready(function() {
     /**
      * Alexey code for tray
      */
+    $('#tray_continue').click(function(e) {
+        e.preventDefault();
+        if (!$("#tray_num").val()) {
+            $("#tray_num").addClass('batch-num-error');
+        } else {
+            $('#tray_form').submit();
+            window.open(baseUrl+'printtray');
+        }
+        // $('#tray_form').submit();
+    });
 
     $('#scan_batch').click(function( event ) {
         event.preventDefault();

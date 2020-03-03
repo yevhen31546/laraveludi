@@ -28,11 +28,6 @@ class CardController extends Controller{
     public function index(Request $request){
         $input=$request->all();
         $udi_list=array();
-        if(session()->has('udi_list')) {
-            $udi_list = session()->get('udi_list');
-        }
-        $input=$request->all();
-        $udi_list=array();
         if(session()->has('udi_list')){
             $udi_list=session()->get('udi_list');
             $udi_list['other']=$input;
@@ -40,7 +35,7 @@ class CardController extends Controller{
             $invoice_flag = false;
             if(in_array("invoice_check", $input)){
                 $invoice_flag = true;
-            }            
+            }
             return view('card.index')->with('invoice_flag', $invoice_flag);
         }
 
@@ -50,6 +45,7 @@ class CardController extends Controller{
     public function printCard(Request $request){
         if(session()->has('udi_list')){
             $udi_list=session()->get('udi_list');
+            //dd($udi_list); exit;
 
             PDF::SetTitle('Card');
             $this->frontCard($udi_list);
@@ -190,6 +186,8 @@ class CardController extends Controller{
         PDF::SetXY(74, 101);
         PDF::SetFont('', 'B', 7, '', true);
         PDF::Write(0,$customer_email);
+
+        PDF::SetLineStyle(array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(255, 255, 0)));
         // phone phoneExtension
         PDF::SetXY(74, 105);
         PDF::SetFont('', 'B', 7, '', true);

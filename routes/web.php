@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TrayController;
+use App\Http\Controllers\PrintTrayController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\InvoiceController;
 
@@ -37,6 +38,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::any('dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::any('getudi', [DashboardController::class, 'getUdi'])->name('getudi');
         Route::any('tray', [TrayController::class, 'getBatch'])->name('getbatch');
+        Route::any('printtray', [PrintTrayController::class, 'printTray'])->name('printtray');
         Route::any('reloadudi', [DashboardController::class, 'reloadUdi'])->name('reloadudi');
         Route::any('card', [CardController::class, 'index'])->name('card');
         Route::any('printcard', [CardController::class, 'printCard'])->name('printcard');

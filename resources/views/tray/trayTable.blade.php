@@ -11,13 +11,23 @@
     <tbody>
     @if(count($data_array) > 0)
         @foreach ($data_array as $list)
-            <tr>
-                <td>{{ $list['deviceName'] }}</td>
-                <td>{{ $list['udi'] }}</td>
-                <td>{{ $list['gtin'] }}</td>
-                <td>{{ $list['batch'] }}</td>
-                <td>{{ $list['expirydate'] }}</td>
-            </tr>
+            @if($list['status'] === 'error')
+                <tr>
+                    <td> Error </td>
+                    <td>{{ $list['error'] }}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            @else
+                <tr>
+                    <td>{{ $list['deviceName'] }}</td>
+                    <td>{{ $list['udi'] }}</td>
+                    <td>{{ $list['gtin'] }}</td>
+                    <td>{{ $list['batch'] }}</td>
+                    <td>{{ $list['expirydate'] }}</td>
+                </tr>
+            @endif
         @endforeach
     @else
         <tr><td colspan="5">There is no result.</td></tr>

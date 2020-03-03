@@ -14,7 +14,7 @@
                 <div class="table_inside">
 
                     {{ html()->form('POST', route('printtray'))->attribute('id', 'tray_form')
-                                                               ->attribute('name', 'tray_form')->open() }}
+                            ->attribute('name', 'tray_form')->attribute('target', 'blank')->open() }}
                     <div class="row">
                         <div class="col-10">
                             <h2 class="text-center">Tray</h2>
@@ -42,7 +42,6 @@
                                     ->placeholder('Batch Number')
                                     ->attribute('id', 'batch_num')
                                     ->attribute('value', (isset($batch_num)?$batch_num:''))
-                                    ->required()
                                 }}
                             </div>
                         </div>
@@ -50,6 +49,7 @@
                             <button id="scan_batch" class="btn btn-defult" type="button">Scan</button>
                         </div>
                     </div>
+
                     <div id="results">
                         <table class=" table table-striped table-bordered mt-3" id="trayTable">
                             <thead>
@@ -74,7 +74,9 @@
                             </button>
                         </div>
                         <div class="col-md-3">
-                            <button id="tray_continue" class="btn btn-defult" type="button">Continue</button>
+                            <button id="tray_continue" class="btn btn-defult" type="button">
+                                Continue
+                            </button>
                         </div>
                     </div>
 
